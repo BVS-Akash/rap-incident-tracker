@@ -1,0 +1,102 @@
+@Metadata.layer: #CORE
+annotate entity ZC_ZAKA_MGMT_INC_HDR with
+{
+
+@UI.facet: [
+    {
+      id: 'GENERAL',
+      type: #IDENTIFICATION_REFERENCE,
+      label: 'General Information',
+      position: 10
+    },
+
+    {
+      id: 'COMMENTS',
+      type: #LINEITEM_REFERENCE,
+      label: 'Comments',
+      targetElement: '_Comment',
+      position: 20
+    },
+
+    {
+      id: 'ATTACHMENTS',
+      type: #LINEITEM_REFERENCE,
+      label: 'Attachments',
+      targetElement: '_Attachment',
+      position: 30
+    },
+
+    {
+      id: 'ACTIVITY_LOGS',
+      type: #LINEITEM_REFERENCE,
+      label: 'Activity Logs',
+      targetElement: '_Log',
+      position: 40
+    }
+  ]
+
+  @UI.selectionField: [{ position: 10 }]
+  @UI.lineItem:       [{ position: 10 }]
+  @UI.identification: [{ position: 10 }]
+  IncidentId;
+
+  @UI.lineItem:       [{ position: 20 }]
+  @UI.identification: [{ position: 20 }]
+  TicketType;
+    
+  @UI.selectionField: [{ position: 20 }]
+  @UI.lineItem:       [{ position: 30 }]
+  @UI.identification: [{ position: 30 }]
+  Status;
+
+  @UI.selectionField: [{ position: 30 }]
+  @UI.lineItem:       [{ position: 40 }]
+  @UI.identification: [{ position: 40 }]
+  Priority;
+
+  @UI.selectionField: [{ position: 40 }]
+  @UI.lineItem:       [{ position: 50 }]
+  @UI.identification: [{ position: 50 }]
+  TowerId;
+
+  @UI.identification: [{ position: 60 }]
+  SapModule;
+
+  @UI.lineItem:       [{ position: 60 }]
+  @UI.identification: [{ position: 70 }]
+  ShortDescription;
+
+  @UI.identification: [{ position: 80 }]
+  Description;
+
+  @UI.selectionField: [{ position: 50 }]
+  @UI.lineItem:       [{ position: 70 }]
+  @UI.identification: [{ position: 90 }]
+  AssignedTo;
+
+  @UI.selectionField: [{ position: 60 }]
+  @UI.identification: [{ position: 100 }]
+  RequestedBy;
+
+  @UI.identification: [{ position: 110 }]
+  PendingWith;
+
+  @UI.identification: [{ position: 120 }]
+  ResolutionNotes;
+
+  @UI.identification: [{ position: 130 }]
+  DueDate;
+
+  @UI.identification: [{ position: 140 }]
+  CreatedBy;
+
+  @UI.identification: [{ position: 150 }]
+  CreatedAt;
+
+  @UI.identification: [{ position: 160 }]
+  ChangedBy;
+
+  @UI.lineItem:       [{ position: 80 }]
+  @UI.identification: [{ position: 170 }]
+  ChangedAt;
+}

@@ -1,0 +1,5 @@
+CLASS zbp_i_zaka_inc_hdr DEFINITION PUBLIC ABSTRACT FINAL FOR BEHAVIOR OF zi_zaka_inc_hdr.
+ENDCLASS.
+
+CLASS zbp_i_zaka_inc_hdr IMPLEMENTATION.
+ENDCLASS.

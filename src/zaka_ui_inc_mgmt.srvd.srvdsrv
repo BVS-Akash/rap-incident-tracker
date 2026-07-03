@@ -1,0 +1,7 @@
+@EndUserText.label: 'Incident Management Service'
+define service ZAKA_UI_INC_MGMT {
+  expose ZC_ZAKA_MGMT_INC_HDR;
+  expose ZC_ZAKA_MGMT_INC_CMT;
+  expose ZC_ZAKA_MGMT_INC_ATT;
+  expose ZC_ZAKA_MGMT_INC_LOG;
+}

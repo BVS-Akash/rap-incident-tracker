@@ -1,0 +1,31 @@
+@Metadata.layer: #CORE
+
+annotate entity ZC_ZAKA_MGMT_INC_LOG with
+{
+
+  @UI.lineItem:       [{ position: 10 }]
+  @UI.identification: [{ position: 10 }]
+  ActivityType;
+
+  @UI.lineItem:       [{ position: 20 }]
+  @UI.identification: [{ position: 20 }]
+  ActivityText;
+
+  @UI.lineItem:       [{ position: 30 }]
+  @UI.identification: [{ position: 30 }]
+  ChangedBy;
+
+  @UI.lineItem:       [{ position: 40 }]
+  @UI.identification: [{ position: 40 }]
+  ChangedAt;
+
+  @UI.identification: [{ position: 50 }]
+  FieldName;
+
+  @UI.identification: [{ position: 60 }]
+  OldValue;
+
+  @UI.identification: [{ position: 70 }]
+  NewValue;
+
+}

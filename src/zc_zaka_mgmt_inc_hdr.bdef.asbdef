@@ -1,0 +1,34 @@
+projection;
+strict ( 2 );
+
+define behavior for ZC_ZAKA_MGMT_INC_HDR alias Incident
+{
+  use create;
+  use update;
+  use delete;
+
+  use association _Attachment { create; }
+  use association _Comment { create; }
+  use association _Log;
+}
+
+define behavior for ZC_ZAKA_MGMT_INC_ATT alias Attachment
+{
+  use delete;
+
+  use association _Incident;
+}
+
+define behavior for ZC_ZAKA_MGMT_INC_CMT alias Comment
+{
+  use update;
+  use delete;
+
+  use association _Incident;
+}
+
+define behavior for ZC_ZAKA_MGMT_INC_LOG alias Log
+{
+
+  use association _Incident;
+}

@@ -1,0 +1,163 @@
+managed implementation in class zbp_i_zaka_inc_hdr unique;
+strict ( 2 );
+
+define behavior for ZI_ZAKA_INC_HDR alias Incident
+persistent table zaka_inc_hdr
+lock master
+authorization master ( global )
+etag master LocalLastChangedAt
+{
+  create ( authorization : global );
+  update;
+  delete;
+field ( mandatory : create, readonly : update ) IncidentId;
+
+  field ( mandatory : create )
+                             TicketType,
+                             Priority,
+                             Status,
+                             TowerId,
+                             ShortDescription;
+
+  field ( readonly ) CreatedBy,
+                   CreatedAt,
+                   ChangedBy,
+                   ChangedAt,
+                   LocalLastChangedAt,
+                   ClosedAt;
+
+  association _Attachment { create; }
+  association _Comment { create; }
+  association _Log;
+
+    validation ValidateDuplicateIncident
+    on save { create; }
+
+    mapping for zaka_inc_hdr
+{
+  IncidentId         = incident_id;
+  TicketType         = ticket_type;
+  TowerId            = tower_id;
+  SapModule          = sap_module;
+  Priority           = priority;
+  Status             = status;
+  ShortDescription   = short_description;
+  Description        = description;
+  RequestedBy        = requested_by;
+  AssignedTo         = assigned_to;
+  PendingWith        = pending_with;
+  ResolutionNotes    = resolution_notes;
+  DueDate            = due_date;
+
+  CreatedBy          = created_by;
+  CreatedAt          = created_at;
+
+  ChangedBy          = changed_by;
+  ChangedAt          = changed_at;
+
+  LocalLastChangedAt = local_last_changed_at;
+
+  ClosedAt           = closed_at;
+}
+
+}
+
+define behavior for ZI_ZAKA_INC_ATT alias Attachment
+persistent table zaka_inc_att
+lock dependent by _Incident
+authorization dependent by _Incident
+//etag master <field_name>
+{
+
+  field ( numbering : managed ) AttachmentId;
+
+  delete;
+  field ( readonly ) IncidentId, AttachmentId;
+
+  field ( readonly )
+                   UploadedBy,
+                   UploadedAt,
+                   LocalLastChangedAt;
+
+  association _Incident;
+
+  mapping for zaka_inc_att
+{
+  AttachmentId       = attachment_id;
+  IncidentId         = incident_id;
+
+  FileName           = file_name;
+  MimeType           = mime_type;
+  FileSize           = file_size;
+
+  UploadedBy          = uploaded_by;
+  UploadedAt          = uploaded_at;
+
+
+  LocalLastChangedAt = local_last_changed_at;
+}
+
+}
+
+define behavior for ZI_ZAKA_INC_CMT alias Comment
+persistent table zaka_inc_cmt
+lock dependent by _Incident
+authorization dependent by _Incident
+//etag master <field_name>
+{
+
+  field ( numbering : managed ) CommentId;
+
+  update;
+  delete;
+  field ( readonly ) IncidentId,CommentId;
+
+  field ( readonly ) CreatedBy,
+                   CreatedAt,
+                   UpdatedBy,
+                   UpdatedAt,
+                   LocalLastChangedAt;
+
+  association _Incident;
+
+  mapping for zaka_inc_cmt
+{
+  CommentId          = comment_id;
+  IncidentId         = incident_id;
+
+  CommentText        = comment_text;
+
+  CreatedBy          = created_by;
+  CreatedAt          = created_at;
+
+  UpdatedBy          = updated_by;
+  UpdatedAt          = updated_at;
+
+  LocalLastChangedAt = local_last_changed_at;
+}
+
+}
+
+define behavior for ZI_ZAKA_INC_LOG alias Log
+persistent table zaka_inc_log
+lock dependent by _Incident
+authorization dependent by _Incident
+//etag master <field_name>
+{
+  field ( readonly ) IncidentId,ActivityId;
+  association _Incident;
+
+    mapping for zaka_inc_log
+  {
+    ActivityId   = activity_id;
+    IncidentId   = incident_id;
+    ActivityType = activity_type;
+    FieldName    = field_name;
+    OldValue     = old_value;
+    NewValue     = new_value;
+    ActivityText = activity_text;
+    ChangedBy    = changed_by;
+    ChangedAt    = changed_at;
+  }
+
+}
