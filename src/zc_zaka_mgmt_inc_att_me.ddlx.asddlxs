@@ -1,18 +1,46 @@
 @Metadata.layer: #CORE
 
-annotate entity ZC_ZAKA_MGMT_INC_CMT with
+annotate entity ZC_ZAKA_MGMT_INC_ATT with
 {
+  @UI.facet: [
+    {
+      id: 'GENERAL',
+      type: #COLLECTION,
+      label: 'General Information',
+      position: 10
+    },
+    {
+      id: 'ATTACHMENT_DETAILS',
+      type: #IDENTIFICATION_REFERENCE,
+      parentId: 'GENERAL',
+      label: 'Attachment Details',
+      position: 10
+    },
+    {
+      id: 'UPLOAD',
+      type: #FIELDGROUP_REFERENCE,
+      parentId: 'GENERAL',
+      label: 'Upload Attachment',
+      position: 20,
+      targetQualifier: 'Upload'
+    }
+  ]
 
-  @UI.lineItem:       [{ position: 10 }]
-  @UI.identification: [{ position: 10 }]
-  CommentText;
+  @UI.fieldGroup: [
+    {
+      qualifier: 'Upload',
+      position: 10,
+      label: 'Attachment'
+    }
+  ]
+  Attachment;
 
-  @UI.lineItem:       [{ position: 20 }]
-  @UI.identification: [{ position: 20 }]
-  CreatedBy;
+  @UI.lineItem: [{ position: 10 }]
+  FileName;
 
-  @UI.lineItem:       [{ position: 30 }]
-  @UI.identification: [{ position: 30 }]
-  CreatedAt;
+  @UI.lineItem: [{ position: 20 }]
+  UploadedBy;
 
+  @UI.lineItem: [{ position: 30 }]
+  UploadedAt;
 }

@@ -1,6 +1,16 @@
 @AccessControl.authorizationCheck: #NOT_REQUIRED
 @EndUserText.label: 'Incident Comments'
 @Metadata.allowExtensions: true
+
+@UI.headerInfo: {
+  typeName: 'Comment',
+  typeNamePlural: 'Comments',
+  title: {
+    type: #STANDARD,
+    value: 'CommentText'
+  }
+}
+
 define view entity ZC_ZAKA_MGMT_INC_CMT
   as projection on ZI_ZAKA_INC_CMT
 {

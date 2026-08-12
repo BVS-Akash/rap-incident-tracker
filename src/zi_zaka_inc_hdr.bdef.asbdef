@@ -85,10 +85,10 @@ authorization dependent by _Incident
 {
   AttachmentId       = attachment_id;
   IncidentId         = incident_id;
-
+  Attachment        = attachment_content;
   FileName           = file_name;
   MimeType           = mime_type;
-  FileSize           = file_size;
+
 
   UploadedBy          = uploaded_by;
   UploadedAt          = uploaded_at;

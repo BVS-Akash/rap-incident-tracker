@@ -1,4 +1,5 @@
 @Metadata.layer: #CORE
+@Search.searchable: true
 annotate entity ZC_ZAKA_MGMT_INC_HDR with
 {
 
@@ -38,6 +39,7 @@ annotate entity ZC_ZAKA_MGMT_INC_HDR with
   @UI.selectionField: [{ position: 10 }]
   @UI.lineItem:       [{ position: 10 }]
   @UI.identification: [{ position: 10 }]
+  @Search.defaultSearchElement: true
   IncidentId;
 
   @UI.lineItem:       [{ position: 20 }]

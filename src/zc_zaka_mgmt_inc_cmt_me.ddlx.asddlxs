@@ -3,6 +3,15 @@
 annotate entity ZC_ZAKA_MGMT_INC_CMT with
 {
 
+  @UI.facet: [
+    {
+      id: 'GENERAL',
+      type: #IDENTIFICATION_REFERENCE,
+      label: 'General Information',
+      position: 10
+    }
+  ]
+
   @UI.lineItem:       [{ position: 10 }]
   @UI.identification: [{ position: 10 }]
   CommentText;

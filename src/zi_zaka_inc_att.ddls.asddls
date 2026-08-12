@@ -8,10 +8,15 @@ define view entity ZI_ZAKA_INC_ATT
 {
   key attachment_id         as AttachmentId,
       incident_id           as IncidentId,
+      @Semantics.largeObject:
+      { mimeType: 'MimeType',
+      fileName: 'FileName',
+      contentDispositionPreference: #INLINE }
+      attachment_content    as Attachment,
       @Search.defaultSearchElement: true
       file_name             as FileName,
+      @Semantics.mimeType: true
       mime_type             as MimeType,
-      file_size             as FileSize,
       @Semantics.user.createdBy: true
       uploaded_by           as UploadedBy,
       @Semantics.systemDateTime.createdAt: true
